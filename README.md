@@ -1,59 +1,197 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Portfolio Builder SaaS
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern SaaS platform that enables developers and professionals to create, manage, and showcase their professional portfolios with zero setup. Build structured portfolios and enhance them with an AI-powered assistant.
 
-## About Laravel
+![Laravel](https://img.shields.io/badge/Laravel-12.x-red?style=flat-square&logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8.2+-blue?style=flat-square&logo=php)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.x-38b2ac?style=flat-square&logo=tailwind-css)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Portfolio Management
+- **Profile Management** - Title, bio, avatar upload, email privacy control
+- **Skills** - Name, proficiency level, category with soft-delete support
+- **Work Experience** - Company, role, duration, description
+- **Education** - Institute, degree, graduation year
+- **Projects** - Title, description, project link, image upload
+- **Social Links** - Platform and URL management
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Public Portfolio Pages
+- SEO-friendly URLs using unique slugs (e.g., `/john-doe`)
+- Automatic username and slug generation
+- Responsive design with Tailwind CSS
+- Open Graph meta tags for social sharing
+- Stats display (skills count, projects count, etc.)
 
-## Learning Laravel
+### AI Chatbot Assistant
+- OpenAI-powered chatbot on public portfolio pages
+- Answers visitor questions about the portfolio owner
+- Context-aware responses based on portfolio data
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Admin Panel
+- User management with role assignment
+- Platform statistics (total users, portfolios, projects)
+- Protected by Admin role middleware (Spatie)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### API & Performance
+- RESTful API for portfolio data access
+- Cached responses for performance (1-hour cache)
+- JSON resources for structured data delivery
 
-## Laravel Sponsors
+## Tech Stack
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+**Backend:**
+- PHP 8.2+
+- Laravel 12.x
+- Laravel Breeze (Authentication)
+- Spatie Laravel Permission (Role management)
+- OpenAI PHP Client (AI integration)
 
-### Premium Partners
+**Frontend:**
+- Tailwind CSS 3.x
+- Alpine.js 3.x
+- Vite 7.x
+- Axios
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+**Database:**
+- SQLite (default for development)
+- MySQL/PostgreSQL supported
 
-## Contributing
+## Installation
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Prerequisites
+- PHP 8.2 or higher
+- Composer
+- Node.js and npm
 
-## Code of Conduct
+### Quick Setup
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+composer run setup
+```
 
-## Security Vulnerabilities
+This command will install dependencies, create `.env`, generate app key, run migrations, and build assets.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Manual Setup
+
+1. **Install PHP dependencies:**
+   ```bash
+   composer install
+   ```
+
+2. **Set up environment:**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+3. **Configure database:**
+   - Default uses SQLite
+   ```bash
+   touch database/database.sqlite
+   ```
+   - Or configure MySQL/PostgreSQL in `.env`
+
+4. **Run migrations:**
+   ```bash
+   php artisan migrate
+   ```
+
+5. **Install Node.js dependencies:**
+   ```bash
+   npm install
+   ```
+
+6. **Build frontend assets:**
+   ```bash
+   npm run build
+   ```
+
+7. **Start the development server:**
+   ```bash
+   npm run dev:serve
+   ```
+   This runs both Laravel server and Vite dev server concurrently.
+
+## Configuration
+
+### AI Chatbot Setup
+
+Add your OpenAI API key to `.env`:
+
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+### File Storage
+
+Create symbolic link for file uploads:
+
+```bash
+php artisan storage:link
+```
+
+## Usage
+
+1. Register a new account at `/register`
+2. Complete your profile at `/dashboard`
+3. Add your skills, experience, education, and projects
+4. Your public portfolio will be available at `/{your-username}`
+5. Visitors can interact with your AI assistant on your public page
+
+### Admin Access
+
+Assign admin role to a user:
+
+```bash
+php artisan tinker
+$user = App\Models\User::find(1);
+$user->assignRole('admin');
+```
+
+Access admin panel at `/admin`
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/portfolio/{slug}` | Get full portfolio data |
+| GET | `/api/portfolio/{slug}/profile` | Get profile information |
+| GET | `/api/portfolio/{slug}/skills` | Get skills list |
+| GET | `/api/portfolio/{slug}/experience` | Get work experience |
+| GET | `/api/portfolio/{slug}/education` | Get education history |
+| GET | `/api/portfolio/{slug}/projects` | Get projects list |
+| GET | `/api/portfolio/{slug}/social-links` | Get social links |
+
+All API responses are cached for 1 hour.
+
+## Project Structure
+
+```
+app/
+├── Http/Controllers/     # Controllers (Auth, Portfolio, Admin, Chatbot)
+├── Models/               # Eloquent models with relationships
+├── Policies/             # Authorization policies
+└── Resources/            # API resources
+resources/
+├── views/
+│   ├── dashboard/        # Portfolio management pages
+│   ├── profile/          # Profile editing
+│   ├── admin/            # Admin panel
+│   └── components/       # Reusable Blade components (chatbot)
+├── css/                  # Tailwind styles
+└── js/                   # Alpine.js components
+```
+
+## Testing
+
+Run tests with Pest PHP:
+
+```bash
+php artisan test
+```
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](LICENSE).

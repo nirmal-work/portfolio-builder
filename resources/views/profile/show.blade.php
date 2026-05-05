@@ -40,25 +40,29 @@
             <!-- Hero Section -->
             <section class="bg-gradient-to-r from-blue-600 to-purple-600 py-12 md:py-20">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex flex-col md:flex-row items-center gap-8">
-                        @if($profile?->avatar)
-                            <img src="{{ asset('storage/' . $profile->avatar) }}" alt="{{ $user->name }}" class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full border-4 border-white shadow-lg">
-                        @else
-                            <div class="w-32 h-32 md:w-40 md:h-40 bg-white rounded-full flex items-center justify-center shadow-lg">
-                                <svg class="w-16 h-16 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        @endif
-                        <div class="text-white text-center md:text-left">
+                    <div class="flex flex-col md:flex-row md:items-start gap-8">
+                        <!-- Avatar -->
+                        <div class="shrink-0 mx-auto md:mx-0">
+                            @if($profile?->avatar)
+                                <img src="{{ asset('storage/' . $profile->avatar) }}" alt="{{ $user->name }}" class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full border-4 border-white shadow-lg">
+                            @else
+                                <div class="w-32 h-32 md:w-40 md:h-40 bg-white rounded-full flex items-center justify-center shadow-lg">
+                                    <svg class="w-16 h-16 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            @endif
+                        </div>
+                        <!-- Details -->
+                        <div class="text-white text-center md:text-left flex-1 min-w-0">
                             <h1 class="text-4xl md:text-5xl font-bold mb-2">{{ $user->name }}</h1>
                             @if($profile?->title)
                                 <p class="text-xl md:text-2xl text-blue-100 mb-4">{{ $profile->title }}</p>
                             @endif
                             @if($profile?->bio)
-                                <p class="text-blue-50 max-w-lg mb-4">{{ $profile->bio }}</p>
+                                <div class="text-lg text-blue-50 whitespace-pre-line mt-2">{{ $profile->bio }}</div>
                             @endif
-                            <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                            <div class="flex flex-wrap gap-3 justify-center md:justify-start mt-6">
                                 @if($profile?->is_email_public)
                                     <a href="mailto:{{ $user->email }}" class="inline-flex items-center px-4 py-2 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50">
                                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
